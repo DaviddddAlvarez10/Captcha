@@ -1,0 +1,12 @@
+{
+  "name": "Python DevContainer",
+  "image": "ghcr.io/devcontainers/templates/python:6.0.0",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "HPCToolsGuy.PythonToolsforVisualStudio",
+        "Vinoth.EchoBot"
+      ]
+    }
+  }
+}
