@@ -1,6 +1,6 @@
 {
   "name": "Python DevContainer",
-  "image": "ghcr.io/devcontainers/templates/python:6.0.0",
+  "image": "mcr.microsoft.com/devcontainers/python",
   "customizations": {
     "vscode": {
       "extensions": [
