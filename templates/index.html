@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Verificación CAPTCHA{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-4 text-center">Verificación CAPTCHA</h1>
+
+        <form method="POST" novalidate>
+          <div class="mb-3 text-center">
+            <label class="form-label d-block">Resuelve el CAPTCHA</label>
+            <img
+              id="captchaImage"
+              class="img-fluid border rounded p-2"
+              src="{{ url_for('captcha_image') }}?v={{ cache_buster }}"
+              alt="CAPTCHA" title="Haz clic para actualizar"
+              style="cursor:pointer; max-height: 80px;"
+            >
+            <div class="form-text">Haz clic en la imagen para actualizarla.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="captcha" class="form-label">Tu respuesta</label>
+            <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Escribe el resultado" required>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Verificar</button>
+            <button type="button" id="refreshBtn" class="btn btn-outline-secondary">Cambiar CAPTCHA</button>
+          </div>
+          
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function refreshCaptcha() {
+    const img = document.getElementById("captchaImage");
+    const url = img.src.split("?")[0];
+    img.src = url + "?v=" + Date.now();
+  }
+  document.getElementById("captchaImage")?.addEventListener("click", refreshCaptcha);
+  document.getElementById("refreshBtn")?.addEventListener("click", refreshCaptcha);
+</script>
+{% endblock %}

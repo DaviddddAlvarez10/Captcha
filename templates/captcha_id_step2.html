@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Verificación por Identificación · Paso 2{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h5 mb-3 text-center">Verificación por Identificación</h1>
+        <p class="text-muted text-center mb-4">
+          Paso 2 de 2 — Ingresa los dígitos <strong>#{{ positions[0] }}</strong> y <strong>#{{ positions[1] }}</strong> de tu identificación.
+        </p>
+
+        <form method="POST" novalidate>
+          <div class="row g-3">
+            <div class="col-6">
+              <label for="digit1" class="form-label">Dígito #{{ positions[0] }}</label>
+              <input
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]"
+                maxlength="1"
+                id="digit1"
+                name="digit1"
+                class="form-control text-center"
+                placeholder="0"
+                required
+              >
+            </div>
+            <div class="col-6">
+              <label for="digit2" class="form-label">Dígito #{{ positions[1] }}</label>
+              <input
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]"
+                maxlength="1"
+                id="digit2"
+                name="digit2"
+                class="form-control text-center"
+                placeholder="0"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary">Verificar</button>
+          </div>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{{ url_for('captcha_id_step1') }}" class="small">Cambiar identificación</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

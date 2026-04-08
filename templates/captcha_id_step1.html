@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Verificación por Identificación · Paso 1{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3 text-center">Verificación por Identificación</h1>
+        <p class="text-muted text-center mb-4">
+          Paso 1 de 2 — Ingresa tu identificación (solo dígitos).
+        </p>
+
+        <form method="POST" novalidate>
+          <div class="mb-3">
+            <label for="identificacion" class="form-label">Identificación</label>
+            <input
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              id="identificacion"
+              name="identificacion"
+              class="form-control"
+              placeholder="Ej.: 123456789"
+              required
+            >
+            <div class="form-text">Solo se aceptan dígitos (6 a 12).</div>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+          </div>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="{{ url_for('index') }}" class="small">Usar CAPTCHA aritmético</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

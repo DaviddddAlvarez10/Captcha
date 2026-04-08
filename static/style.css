@@ -1,0 +1,34 @@
+/* Estilos mínimos para complementar Bootstrap, sin romper su grid ni sus utilidades */
+body {
+  /* Mantén un fondo suave; Bootstrap ya usa .bg-light en <body> vía base.html */
+  background-color: #f8f9fa; /* equivalente bs bg-light */
+}
+
+/* Card contenedor: ya usamos .card y sombras de Bootstrap, pero puedes reforzar */
+.card {
+  border-radius: 12px;
+}
+
+/* Botones: Bootstrap los pinta; aquí solo ajustes opcionales */
+.btn {
+  border-radius: 8px;
+}
+
+/* Campo de texto: Bootstrap controla los inputs con .form-control */
+.form-control {
+  border-radius: 8px;
+}
+
+/* Imagen del captcha: borde ya se define inline, pero puedes ajustar aquí */
+#captchaImage {
+  background-color: #fff;
+}
+
+/* Si quieres centrar verticalmente toda la vista, descomenta:
+main.container {
+  min-height: calc(100vh - 140px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*/

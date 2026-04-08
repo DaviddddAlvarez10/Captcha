@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}CAPTCHA de Secuencia{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-7 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body p-4 text-center">
+        <h1 class="h5 mb-3">CAPTCHA de Secuencia</h1>
+        <p class="small text-muted mb-3">
+          Observa la secuencia y escribe el número que continúa.
+        </p>
+
+        <figure class="mb-3">
+          <img id="captchaSeqImage"
+               src="{{ url_for('captcha_secuencia_image') }}?v={{ cache_buster }}"
+               class="border rounded p-2"
+               style="cursor:pointer; max-width:100%;"
+               alt="Imagen con secuencia numérica" title="Haz clic para cambiar">
+        </figure>
+
+        <form method="POST" novalidate>
+          <div class="mb-3">
+            <label for="sequence" class="form-label">Número que sigue</label>
+            <input type="number" id="sequence" name="sequence" class="form-control" placeholder="Ej: 8" required>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Verificar</button>
+            <button type="button" id="refreshSeqBtn" class="btn btn-outline-secondary">Cambiar CAPTCHA</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function refreshSeqCaptcha() {
+    const img = document.getElementById('captchaSeqImage');
+    img.src = img.src.split('?')[0] + '?v=' + Date.now();
+  }
+  document.getElementById('captchaSeqImage')?.addEventListener('click', refreshSeqCaptcha);
+  document.getElementById('refreshSeqBtn')?.addEventListener('click', refreshSeqCaptcha);
+</script>
+{% endblock %}
